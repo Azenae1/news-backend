@@ -37,7 +37,32 @@ const loginValidation = celebrate({
   }),
 });
 
+const articleValidation = celebrate({
+  body: Joi.object().keys({
+    keyword: Joi.string().required().messages({
+      "string.empty": "The keyword field must be filled in",
+    }),
+    title: Joi.string().required(),
+    text: Joi.string().required(),
+    date: Joi.string().required(),
+    source: Joi.string().required(),
+    link: Joi.string().required().custom(validateURL).messages({
+      "string.empty": "The link field must be filled in",
+      "string.url": "The link field must be a valid URL",
+    }),
+    imageUrl: Joi.string().required().custom(validateURL),
+  }),
+});
+
+const idValidation = celebrate({
+  params: Joi.object().keys({
+    itemId: Joi.string().hex().required().length(24),
+  }),
+});
+
 module.exports = {
   createUserValidation,
   loginValidation,
+  idValidation,
+  articleValidation,
 };

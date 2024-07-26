@@ -82,25 +82,4 @@ const getCurrentUser = (req, res, next) => {
     });
 };
 
-// const updateUser = (req, res, next) => {
-//   const userId = req.user._id;
-//   const { name, avatar, city } = req.body;
-//   User.findByIdAndUpdate(
-//     userId,
-//     { name, avatar, city },
-//     { new: true, runValidators: true }
-//   )
-//     .then((updatedUser) => {
-//       res.send(updatedUser);
-//     })
-//     .catch((err) => {
-//       // console.error(err);
-//       if (err.name === "ValidationError") {
-//         next(new BadRequestErr("Something went wrong!"));
-//       } else {
-//         next(err);
-//       }
-//     });
-// };
-
 module.exports = { createUser, getCurrentUser, login };
