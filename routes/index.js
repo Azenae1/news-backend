@@ -12,7 +12,7 @@ router.post("/signin", loginValidation, login);
 
 router.use("/users", userRouter);
 
-router.use((next) => {
+router.use((req, res, next) => {
   next(new NotFoundErr("Not found"));
 });
 

@@ -9,6 +9,7 @@ const NotFoundErr = require("../utils/err_notFound");
 const AuthErr = require("../utils/err_auth");
 
 const createUser = (req, res, next) => {
+  console.log("createUser");
   const { name, email, password } = req.body;
   if (!email || !password) {
     next(new BadRequestErr("Email or password incorrect"));
@@ -40,6 +41,7 @@ const createUser = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
+  console.log("login");
   const { email, password } = req.body;
   if (!email || !password) {
     next(new BadRequestErr("Invalid data"));
