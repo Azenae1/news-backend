@@ -5,7 +5,7 @@ const NotFoundErr = require("../utils/err_notFound");
 const ForbiddenErr = require("../utils/err_forbidden");
 
 const getArticles = (req, res, next) => {
-  console.log("GET articles");
+  // console.log("GET articles");
   Article.find({ owner: req.user._id })
     .then((items) => res.send(items))
     .catch((err) => {
@@ -17,7 +17,7 @@ const getArticles = (req, res, next) => {
 const addArticle = (req, res, next) => {
   console.log("POST articles");
   console.log(req.user._id);
-  const { keyword, title, text, date, source, link, imageUrl } = req.body;
+  const { keyword, title, text, date, source, link, image } = req.body;
   Article.create({
     keyword,
     title,
@@ -25,7 +25,7 @@ const addArticle = (req, res, next) => {
     date,
     source,
     link,
-    imageUrl,
+    image,
     owner: req.user._id,
   })
     .then((article) => res.status(201).send({ data: article }))

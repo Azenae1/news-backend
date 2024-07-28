@@ -50,7 +50,7 @@ const articleValidation = celebrate({
       "string.empty": "The link field must be filled in",
       "string.url": "The link field must be a valid URL",
     }),
-    imageUrl: Joi.string().required().custom(validateURL),
+    image: Joi.string().required().custom(validateURL),
   }),
 });
 
