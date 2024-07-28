@@ -10,10 +10,9 @@ const {
   idValidation,
 } = require("../middlewares/validation");
 
-router.get("/", getArticles);
-
 router.use(authorization);
 
+router.get("/", getArticles);
 router.post("/", articleValidation, addArticle);
 router.delete("/:articleId", idValidation, deleteArticle);
 
