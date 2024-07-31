@@ -41,15 +41,15 @@ const addArticle = (req, res, next) => {
 
 const deleteArticle = (req, res, next) => {
   console.log("DELETE articles");
-  const { articleId } = req.params;
+  const { itemId } = req.params;
 
-  Article.findById(articleId)
+  Article.findById(itemId)
     .orFail()
     .then((article) => {
       if (!article.owner.equals(req.user._id)) {
         return next(new ForbiddenErr("You can't delete this article"));
       }
-      return Article.findByIdAndDelete(articleId).then((user) => {
+      return Article.findByIdAndDelete(itemId).then((user) => {
         res.send(user);
       });
     })
